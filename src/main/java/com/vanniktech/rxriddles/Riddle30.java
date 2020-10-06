@@ -1,6 +1,6 @@
 package com.vanniktech.rxriddles;
 
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.core.Single;
 
 class Riddle30 {
   /**
@@ -8,7 +8,7 @@ class Riddle30 {
    *
    * Use case: Add some logging.
    */
-  public static Observable<Integer>solve(source: Single<Integer>, function: () -> Unit): Single<Integer> {
+  public static Single<Integer> solve(Single<Integer> source, Runnable runnable) {
     //TODO()
     return null;
   }

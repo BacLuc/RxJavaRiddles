@@ -1,6 +1,8 @@
 package com.vanniktech.rxriddles;
 
-import io.reactivex.rxjava3.core.Maybe
+import io.reactivex.rxjava3.core.Maybe;
+
+import java.util.function.Consumer;
 
 class Riddle29 {
   /**
@@ -8,7 +10,7 @@ class Riddle29 {
    *
    * Use case: Add some logging.
    */
-  public static Observable<Integer>solve(source: Maybe<Integer>, function: (Throwable) -> Unit): Maybe<Integer> {
+  public static Maybe<Integer> solve(Maybe<Integer> source, Consumer<Throwable> throwableConsumer) {
     //TODO()
     return null;
   }

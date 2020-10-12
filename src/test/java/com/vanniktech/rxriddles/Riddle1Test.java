@@ -2,12 +2,14 @@ package com.vanniktech.rxriddles;
 
 import org.junit.Test;
 
-/** Solution [Riddle1Solution] */
+/**
+ * Solution [Riddle1Solution]
+ */
 public class Riddle1Test {
-  @Test
-  public void solve() {
-    Riddle1.solve(5)
-        .test()
-        .assertResult(5);
-  }
+	@Test
+	public void solve() {
+		Riddle1.solve(5)
+				.test()
+				.assertResult(5);
+	}
 }

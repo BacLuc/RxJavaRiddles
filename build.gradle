@@ -1,29 +1,29 @@
 buildscript {
 
-  repositories {
-    mavenCentral()
-    gradlePluginPortal()
-  }
-  dependencies {
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
-  }
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
+    }
 }
 
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'com.github.ben-manes.versions'
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-  implementation 'io.reactivex.rxjava3:rxjava:3.0.3'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.3'
 
-  testImplementation "junit:junit:4.12"
-  testImplementation "org.assertj:assertj-core:3.10.0"
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.assertj:assertj-core:3.10.0"
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '4.9'
-  distributionType = Wrapper.DistributionType.ALL
+    gradleVersion = '4.9'
+    distributionType = Wrapper.DistributionType.ALL
 }

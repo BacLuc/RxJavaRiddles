@@ -1,5 +1,7 @@
 # Android Studio
 .idea
+!/.idea/codeStyles
+!/.idea/encodings.xml
 .gradle
 build/
 *.iml

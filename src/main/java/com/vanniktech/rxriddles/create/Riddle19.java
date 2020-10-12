@@ -1,5 +1,7 @@
 package com.vanniktech.rxriddles.create;
 
+import java.util.function.Consumer;
+
 import io.reactivex.rxjava3.core.Observable;
 
 class Riddle19 {
@@ -15,6 +17,8 @@ class Riddle19 {
 	}
 
 	interface Interaction {
-		void act(Integer integer);
+		void addListener(Consumer<Integer> listener);
+
+		void removeListener(Consumer<Integer> listener);
 	}
 }

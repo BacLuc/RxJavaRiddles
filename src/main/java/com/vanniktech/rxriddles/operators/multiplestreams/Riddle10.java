@@ -1,9 +1,9 @@
 package com.vanniktech.rxriddles.operators.multiplestreams;
 
-import io.reactivex.rxjava3.core.Observable;
-
 import java.util.Map;
 import java.util.function.Function;
+
+import io.reactivex.rxjava3.core.Observable;
 
 class Riddle10 {
 	/**

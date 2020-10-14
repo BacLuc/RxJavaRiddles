@@ -1,8 +1,8 @@
 package com.vanniktech.rxriddles.operators.onestream;
 
-import io.reactivex.rxjava3.core.Observable;
-
 import java.util.List;
+
+import io.reactivex.rxjava3.core.Observable;
 
 class Riddle22 {
 	/**

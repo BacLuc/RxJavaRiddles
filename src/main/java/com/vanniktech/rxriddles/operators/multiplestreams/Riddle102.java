@@ -1,8 +1,8 @@
 package com.vanniktech.rxriddles.operators.multiplestreams;
 
-import io.reactivex.rxjava3.core.Single;
-
 import java.util.Map;
+
+import io.reactivex.rxjava3.core.Single;
 
 class Riddle102 {
 	/**

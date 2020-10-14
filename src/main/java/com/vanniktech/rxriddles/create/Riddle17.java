@@ -1,8 +1,8 @@
 package com.vanniktech.rxriddles.create;
 
-import io.reactivex.rxjava3.core.Single;
-
 import java.util.function.Supplier;
+
+import io.reactivex.rxjava3.core.Single;
 
 class Riddle17 {
 	/**

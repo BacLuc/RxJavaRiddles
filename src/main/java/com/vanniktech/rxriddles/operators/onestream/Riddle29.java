@@ -1,8 +1,8 @@
 package com.vanniktech.rxriddles.operators.onestream;
 
-import io.reactivex.rxjava3.core.Maybe;
-
 import java.util.function.Consumer;
+
+import io.reactivex.rxjava3.core.Maybe;
 
 class Riddle29 {
 	/**

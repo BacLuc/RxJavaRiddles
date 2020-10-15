@@ -9,6 +9,11 @@ Each riddle is in a single file with mabe an accompanying unit test that will ch
 
 The solutions (in Kotlin) to some riddles can be found at https://github.com/vanniktech/RxRiddles/tree/master/src/test/kotlin/com/vanniktech/rxriddles/solutions.
 
+A helpful documentation can be found here:
+Documentation: http://reactivex.io/documentation/operators.html
+Decision Tree: http://reactivex.io/documentation/operators.html#tree
+Visualization of Operators: https://rxmarbles.com/
+
 ### Contributing
 
 I'm very open to having some more riddles. Especially some complex common use cases. In case you want to contribute create an issue and let's talk.

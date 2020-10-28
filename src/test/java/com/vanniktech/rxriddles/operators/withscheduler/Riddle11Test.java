@@ -7,29 +7,26 @@ import io.reactivex.rxjava3.observers.TestObserver;
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 import org.junit.Test;
 
-import static java.util.Arrays.asList;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 public class Riddle11Test {
 
 	@Test
-	public void test() {
-		final TestScheduler rxRule = new TestScheduler();
+	public void solve() {
+		TestScheduler testScheduler = new TestScheduler();
+		Observable<Unit> source = Observable.fromArray(50L, 200L, 250L, 400L)
+											.flatMapSingle(aLong -> Single.timer(aLong, MILLISECONDS, testScheduler))
+											.map(__ -> Unit.create());
 
-		final Unit unit = Unit.create();
+		TestObserver<Unit> o = Riddle11.solve(source, testScheduler).test().assertEmpty();
 
-		Observable<Unit> source = Observable.fromIterable(asList(50L, 200L, 250L, 400L))
-											.flatMapSingle(it -> Single.timer(it, MILLISECONDS, rxRule).map(__ -> unit));
+		testScheduler.advanceTimeBy(50, MILLISECONDS);
+		o.assertValueCount(1); // Handle the first one.
 
-		TestObserver<Unit> o = Riddle11.solve(source, rxRule).test().assertEmpty();
+		testScheduler.advanceTimeBy(200, MILLISECONDS);
+		o.assertValueCount(1); // Don't handle any others.
 
-		rxRule.advanceTimeBy(50, MILLISECONDS);
-		o.assertValuesOnly(unit); // Handle the first one.
-
-		rxRule.advanceTimeBy(200, MILLISECONDS);
-		o.assertValuesOnly(unit); // Don't handle any others.
-
-		rxRule.advanceTimeBy(150, MILLISECONDS);
-		o.assertResult(unit, unit); // Now process the next one.
+		testScheduler.advanceTimeBy(150, MILLISECONDS);
+		o.assertValueCount(2); // Now process the next one.
 	}
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
+import com.vanniktech.rxriddles.solutions.operators.withscheduler.RiddleCarouselSolution;
 import io.reactivex.rxjava3.observers.TestObserver;
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 import org.junit.Test;
@@ -34,7 +35,7 @@ public class RiddleCarouselTest {
 		TestObserver<String> testObserver = RiddleCarousel.solve(acquirerCallable, FETCH_INTERVAL, CAROUSEL_INTERVAL, scheduler).test();
 
 		scheduler.advanceTimeBy(CAROUSEL_INTERVAL.toMillis() - 1, TimeUnit.MILLISECONDS);
-		testObserver.assertValues(ACQUIRER_1);
+		testObserver.assertValue(ACQUIRER_1);
 
 		scheduler.advanceTimeBy(1, TimeUnit.MILLISECONDS);
 		testObserver.assertValues(ACQUIRER_1, ACQUIRER_2);
@@ -43,10 +44,10 @@ public class RiddleCarouselTest {
 		testObserver.assertValues(ACQUIRER_1, ACQUIRER_2, ACQUIRER_3, ACQUIRER_1, ACQUIRER_2, ACQUIRER_3);
 
 		Mockito.when(acquirerCallable.call()).thenReturn(ACQUIRERS_2);
-		scheduler.advanceTimeBy(CAROUSEL_INTERVAL.toMillis(), TimeUnit.MILLISECONDS);
-		testObserver.assertValues(ACQUIRER_1, ACQUIRER_2, ACQUIRER_3, ACQUIRER_1, ACQUIRER_2, ACQUIRER_3, ACQUIRER_4);
+		scheduler.advanceTimeBy(2 * CAROUSEL_INTERVAL.toMillis(), TimeUnit.MILLISECONDS);
+		testObserver.assertValues(ACQUIRER_1, ACQUIRER_2, ACQUIRER_3, ACQUIRER_1, ACQUIRER_2, ACQUIRER_3, ACQUIRER_4, ACQUIRER_5);
 
 		scheduler.advanceTimeBy(CAROUSEL_INTERVAL.toMillis(), TimeUnit.MILLISECONDS);
-		testObserver.assertValues(ACQUIRER_1, ACQUIRER_2, ACQUIRER_3, ACQUIRER_1, ACQUIRER_2, ACQUIRER_3, ACQUIRER_4, ACQUIRER_5);
+		testObserver.assertValues(ACQUIRER_1, ACQUIRER_2, ACQUIRER_3, ACQUIRER_1, ACQUIRER_2, ACQUIRER_3, ACQUIRER_4, ACQUIRER_5, ACQUIRER_6);
 	}
 }

@@ -24,4 +24,15 @@ public class RiddleCarouselSolution {
 														 .map(index -> index % strings.size())
 														 .map(index -> strings.get(Math.toIntExact(index))));
 	}
+
+	public static Observable<String> solve2(Callable<List<String>> acquirerCallable, Duration fetchInterval, Duration carouselInterval, Scheduler scheduler) {
+		return Observable.interval(0, fetchInterval.toMillis(), TimeUnit.MILLISECONDS, scheduler)
+						 .map(__ -> acquirerCallable.call())
+						 .switchMap(strings -> Observable.interval(0, carouselInterval.toMillis(), TimeUnit.MILLISECONDS, scheduler)
+														 .zipWith(Observable.fromIterable(strings)
+																			.take(strings.size())
+																			.repeatWhen(o -> o.delay(carouselInterval.toMillis(),
+																									 TimeUnit.MILLISECONDS,
+																									 scheduler)), (aLong, s) -> s));
+	}
 }
